@@ -11,3 +11,5 @@ end
 def perform
 	say_hello(ask_first_name) #"Bonjour, first_name !"
 end
+
+perform
