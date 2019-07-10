@@ -39,7 +39,7 @@ def average_finish_time
 	stats.each do |i|
 	total += i
 	end
-	average = total.to_f / stats.count
+	average = total.to_f / stats.size
 	puts "Le nombre de tours moyen pour arriver en haut est : #{average} tours"
 end
 
