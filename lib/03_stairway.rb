@@ -31,15 +31,11 @@ def play
 end
 
 def average_finish_time
-	stats = []
-	1.upto(100) do
-		stats << play
+	total = 0.0
+	100.times do
+		total += play
 	end
-	total = 0
-	stats.each do |i|
-	total += i
-	end
-	average = total.to_f / stats.size
+	average = total / 100
 	puts "Le nombre de tours moyen pour arriver en haut est : #{average} tours"
 end
 

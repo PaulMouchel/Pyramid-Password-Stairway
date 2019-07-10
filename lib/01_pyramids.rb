@@ -25,11 +25,16 @@ end
 
 def wtf_pyramid
 	hauteur = ask_pyramid_size
+	h = hauteur/2 + 1
 	puts "Voici la pyramide :"
-	1.upto(hauteur) { |i| puts " "*(hauteur - i) + "#"*((i-1)*2 + 1) }
-	(hauteur-1).downto(1) { |i| puts " "*(hauteur - i) + "#"*((i-1)*2 + 1) }
+	1.upto(h) { |i| puts " "*(h - i) + "#"*((i-1)*2 + 1) }
+	(h-1).downto(1) { |i| puts " "*(h - i) + "#"*((i-1)*2 + 1) }
 end
 
-half_pyramid
-full_pyramid
-wtf_pyramid
+def perform
+	half_pyramid
+	full_pyramid
+	wtf_pyramid
+end
+
+perform

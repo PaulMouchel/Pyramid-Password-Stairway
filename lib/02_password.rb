@@ -5,15 +5,21 @@ def signup
 	return gets.chomp
 end
 
-
 def login (password)
+	essais = 3
 	puts "Bonjour, veuillez saisir votre MDP :"
 	print "> "
 	str = gets.chomp
 	while password != str
-		puts "MDP incorrect, reessayez :"
-		print "> "
-		str = gets.chomp
+		if essais > 0
+			puts "MDP incorrect, reessayez : (reste #{essais} essais)"
+			print "> "
+			str = gets.chomp
+			essais -= 1
+		else
+			puts "Accès refusé"
+			return false
+		end
 	end
 	return true
 end
@@ -28,8 +34,7 @@ def welcome_screen
 end
 
 def perform
-	password = signup
-	if login(password)
+	if login(signup)
 		welcome_screen
 	end	
 end
