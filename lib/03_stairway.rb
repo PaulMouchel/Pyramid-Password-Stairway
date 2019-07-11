@@ -1,4 +1,8 @@
-def throw_dice
+def throw_dice(auto_mode)
+	if !auto_mode
+		puts "Appuyez sur entrée pour lancer le dé"
+		gets
+	end
 	return (1 + rand(6))
 end
 
@@ -17,13 +21,13 @@ def try_to_go_up (dice_value, actual_step)
 end
 
 
-def play
+def play(auto_mode = false)
 	actual_step = 0
 	puts "Début du jeu"
 	puts "Vous être à la marche : #{actual_step}"
 	turns = 0
 	while actual_step < 10
-		actual_step = try_to_go_up(throw_dice, actual_step)
+		actual_step = try_to_go_up(throw_dice(auto_mode), actual_step)
 		turns += 1
 	end
 	puts "Fin de partie, vous êtes en haut en #{turns} tours, Félicitations !!!!"
@@ -33,14 +37,14 @@ end
 def average_finish_time
 	total = 0.0
 	100.times do
-		total += play
+		total += play(true)
 	end
 	average = total / 100
 	puts "Le nombre de tours moyen pour arriver en haut est : #{average} tours"
 end
 
 def perform
-	#play
+	play
 	average_finish_time
 end
 
