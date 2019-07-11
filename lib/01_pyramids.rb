@@ -3,12 +3,20 @@ def ask_pyramid_size
 	puts "Salut, bienvenue dans ma super pyramide ! Combien d'étages veux-tu ?"
 	print "> "
 	h = gets.to_i
-	while (h%2 == 0 || h<1 || h>25)
-		puts "Saisis un nombre impair entre 1 et 25 stp !"
+	while (h<1 || h>25)
+		puts "Saisis un entre 1 et 25 stp !"
 		print "> "
 		h = gets.to_i
 	end
 	return h
+end
+
+def check_parity(size)
+	while size.even?
+		puts "Saisis un nombre impair sinon c'est moche !"
+		size = ask_pyramid_size
+	end
+	return size
 end
 
 def half_pyramid
@@ -24,7 +32,7 @@ def full_pyramid
 end
 
 def wtf_pyramid
-	hauteur = ask_pyramid_size
+	hauteur = check_parity(ask_pyramid_size)
 	h = hauteur/2 + 1
 	puts "Voici la pyramide :"
 	1.upto(h) { |i| puts " "*(h - i) + "#"*((i-1)*2 + 1) }
